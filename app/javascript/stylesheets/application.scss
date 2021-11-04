@@ -1,0 +1,17 @@
+/* app/javascript/stylesheets/application.scss */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+
+
+/*! purgecss start ignore */
+@import "components/home";
+@import "components/buttons";
+@import "components/errors";
+
+body {
+  @apply bg-gray-200 ;
+}
+/*! purgecss end ignore */
+
+/* Add any custom CSS here */
+@import "tailwindcss/utilities";
