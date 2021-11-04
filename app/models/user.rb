@@ -11,7 +11,7 @@ class User < ApplicationRecord
   #has_many :classrooms  
   #has_many :schoolNames  
   #has_many :cityAreas
-  #has_many :courses
+  has_many :courses
   attr_writer :logged
 #
 

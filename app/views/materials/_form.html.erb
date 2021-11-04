@@ -16,17 +16,8 @@
     <%= form.text_field :title %>
   </div>
 
-  <div class="field">
-    <%= form.label :slug %>
-    <%= form.text_field :slug %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Create Material", class:"p-2 bg-lightblue-500 border rounded-md" %>
   </div>
 <% end %>

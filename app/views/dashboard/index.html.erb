@@ -1,2 +1,14 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
+
+    <% content_for @title="Espace Lnprof" %>
+<!-- component -->
+<div>   
+    <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-gray-200">
+        <div :class="sidebarOpen ? 'block' : 'hidden'" @click="sidebarOpen = false" class="fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden"></div>
+            <%= render "dashboard/shared/sidebar" %>
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <%= render "dashboard/shared/header" %>
+            <!-- Main contient:: items and students list-->
+            <%= render "dashboard/shared/main" %>
+        </div>
+    </div>
+</div>
