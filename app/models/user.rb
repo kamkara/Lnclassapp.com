@@ -8,7 +8,7 @@ class User < ApplicationRecord
   #has_many :exercices
   has_many :materials
   has_many :levels  
-  #has_many :classrooms  
+  has_many :classrooms  
   #has_many :schoolNames  
   #has_many :cityAreas
   has_many :courses

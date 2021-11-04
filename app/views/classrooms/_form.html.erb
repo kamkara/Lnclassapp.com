@@ -1,0 +1,40 @@
+
+<div class="container">
+<%= form_with(model: classroom) do |form| %>
+  <% if classroom.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(classroom.errors.count, "error") %> prohibited this classroom from being saved:</h2>
+
+      <ul>
+        <% classroom.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    
+    <%= form.text_field :name, class:"p-2", placeholder:"Nom de la classe ..." %>
+  </div>
+
+  <div class="w-full">
+    <div class="flex select w-1/2 my-2">
+        <%= form.select :level_id, @levels.map{|level| [level.title, level.id]}, class:" border rounded py-2 px-3",
+          placeholder:"Série", hide_label: true %>
+        
+      </div>
+    <div class="flex select w-1/2 my-2">
+        <%= form.select :level_id, @levels.map{|level| [level.title, level.id]}, class:" border rounded py-2 px-3",
+          placeholder:"Série", hide_label: true %>
+      </div>
+  </div>
+
+
+
+  <div class="actions">
+    <%= form.submit "Créez une classe", class:"p-2 border-md bg-blue-400 text-md font-bold" %>
+  </div>
+<% end %>
+
+</div>

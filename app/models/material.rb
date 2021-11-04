@@ -1,6 +1,6 @@
 class Material < ApplicationRecord
-    belongs_to :user
-  #has_many :courses
+  belongs_to :user
+  has_many :courses
 
   validates :title,
             :user_id,
