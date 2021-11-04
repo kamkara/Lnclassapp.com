@@ -27,8 +27,9 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'bootstrap', '~> 5.1'
 gem 'jquery-rails'
-
-
+gem 'friendly_id', '~> 5.4', '>= 5.4.2'
+gem 'devise', '~> 4.8'
+#gem 'devise_invitable', '~> 2.0', '>= 2.0.5'
 
 
 
