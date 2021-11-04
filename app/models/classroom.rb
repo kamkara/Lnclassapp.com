@@ -13,11 +13,11 @@ class Classroom < ApplicationRecord
 
   #has_one :teacher, through: :classroom_admin, source: :user #un prof est admin
 
-    #has_and_belongs_to_many :students, #plusieurs eleves peuvent rejoindre une classe
-    #    :class_name => 'User',
-    #    :join_table => 'groups_users',
-    #    :foreign_key => 'user_id',
-    #    :association_foreign_key => 'group_id'
+    has_and_belongs_to_many :students, #plusieurs eleves peuvent rejoindre une classe
+        :class_name => 'User',
+        :join_table => 'classrooms_users',
+        :foreign_key => 'user_id',
+        :association_foreign_key => 'classroom_id'
 
 #SLUG
   extend FriendlyId

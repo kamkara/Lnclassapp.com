@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   
+  resources :exercices
   resources :classrooms
   get "espace-enseignant", to:'dashboard#index'
   get "lesson", to:'courses#new'
@@ -8,6 +9,20 @@ Rails.application.routes.draw do
   resources :materials
   resources :levels
   root to:'home#index'
+
+resources :classrooms, only: [:index, :new, :create, :create] do
+  resources :exercices, only: [:new, :create, :show]
+end
+
+resources :exercices, except: [:new, :show, :edit, :create, :update, :destroy, :index] do
+  member do
+    delete 'delete', to: 'exercices#destroy'
+    post '/publish', to: 'exercices#pubish'
+  end
+  #resources :questions, only: [:new, :create, :destroy]
+  #resources :results, only: [:new, :create]
+  
+end
 
 
   ######### USER DATA #########
