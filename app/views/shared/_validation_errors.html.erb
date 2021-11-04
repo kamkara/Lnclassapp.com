@@ -1,0 +1,15 @@
+<% if record.errors.any? %>
+    <section class="errors-block error-border">
+        <ul>
+            <% record.errors.messages.values.each do |msg| %>
+                <% msg.each do |m| %>
+                    <li><%= m %></li>
+                <% end %>
+            <% end %>
+        </ul>
+    </section>
+<% end %>
+
+
+
+<%#= render 'shared/validation_errors', :record => @question %>

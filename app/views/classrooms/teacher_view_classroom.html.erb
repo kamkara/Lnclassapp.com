@@ -1,8 +1,0 @@
-<div class="list-container">
-    <h2>Quizzes for teacher</h2>
-    <% if @group.quizzes.count > 0 %>
-        <%= render partial: "display_group_quizzes", locals: {quizzes: @group.quizzes, group: @group} %>
-    <% else %>
-        <%= link_to "Create A Quiz for #{@group.name}!", new_group_quiz_path(@group) %>
-    <% end %>
-</div>

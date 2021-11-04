@@ -26,9 +26,13 @@ class ClassroomsController < ApplicationController
   # POST /classrooms or /classrooms.json
   def create
     @classroom = current_user.classrooms.build(classroom_params)
-    redirect_to classrooms_path and return if @classroom.save
+    redirect_to classrooms_path(@classroom) and return if @classroom.save
     render :new
     
+
+      @group = Group.new(group_params.merge({teacher: current_user}))
+        redirect_to group_path(@group) and return if @group.save()
+        render :new
   end
 
   # PATCH/PUT /classrooms/1 or /classrooms/1.json
