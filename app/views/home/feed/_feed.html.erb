@@ -1,0 +1,30 @@
+<% @feed_courses.each do |course| %>
+  <div class="bg-white rounded-md mb-2">
+    <div class="mx-2 py-2">
+      <!-- author content-->
+      <div class="flex text-sm">
+        <span class="h-8 w-8 rounded-full bg-gray-300"></span> 
+        <p class="font-semibold mt-1 ml-2">
+          <%= course.user.full_name %> <br>
+        </p>
+        <p class="mt-1 ml-2">
+          <small class=""> Professeur de <%= course.user.school_name %></small>
+        </p>
+      </div>
+      <!-- Course title-->
+      <div class="font-semibold text-xl pb-4">
+        <%= course.title %>
+      </div>
+      <!-- Course content-->
+      <div class="border border-1 rounded-md m-2">
+        <div class="m-2">
+          <%= course.content %>
+        </div>
+      </div>
+      <!-- metadata -->
+      <div class="bg-gray-200 p-2 text-sm flex">
+        <%= render "home/feed/metadata_course.html.erb" %>
+      </div>
+    </div>
+  </div>
+<% end %>

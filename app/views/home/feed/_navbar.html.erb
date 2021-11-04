@@ -1,0 +1,42 @@
+
+<main class="">
+  <nav class="navbar navbar-expand-sm fixed-top navbar-blue bg-blue-500" aria-label="Third navbar example">
+    <div class="container-fluid">
+      <div class="ml-44">
+        <%= link_to root_path, class:"navabr-brand" do %>
+          <p class="font-bold text-white text-xl md:text-3xl">
+            <span class="bg-blue-500 text-white">Ln</span><span class="">class</span>
+          </p>
+        <% end %>
+      </div>
+    
+      <div class="block md:hidden">
+        <button class="flex items-center px-3 py-2 border rounded text-teal-lighter border-teal-light hover:text-white hover:border-white" type="button" data-bs-toggle="collapse" data-bs-target="#LnNavbar" aria-controls="LnNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <svg class="h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse text-black font-bold" id="LnNavbar">
+        <div class="nav-item">
+          <%= link_to root_path, class:'nav-link text-black active  md:ml-12' do %>
+            <span class=""> <i class="fa fa-home" aria-current="page"></i>Accueil</span>
+          <% end %>
+        </div>
+        <div class="nav-item md:ml-48">
+          <%= link_to lesson_path, class:'nav-link text-black font-bold' do %>
+            <span class=""><i class="fa fa-plus-circle"></i> Créations </span>  
+          <% end %>
+        </div>
+        <div class="nav-item">
+          <%= link_to espace_enseignant_path, class:'nav-link text-black font-bold' do %>
+            <span class=""><i class="fas fa-users"></i> Espace Professeur</span> 
+          <% end %>
+        </div>
+        <div class="nav-item">
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <span><i class="fas fa-sign-out-alt"></i> Déconnecter</span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </nav>
+</main>

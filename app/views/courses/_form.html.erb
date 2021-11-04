@@ -1,0 +1,42 @@
+
+<%= form_with(model: course) do |f| %>
+  <div class="container md:px-12">
+    <% if course.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+        <ul>
+          <% course.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+
+    <div class="">
+      <%= f.label :"le titre" %>
+      <%= f.text_field :title, class:" border rounded-md w-full py-2 px-3", placeholder:"le titre du contenu ..." %>
+    </div>
+    <div class="">
+      <%= f.label :"L'essential du cours" %>
+      <%= f.rich_text_area :content, class:" border border-2 bg-red-400 bg-white px-12 rounded-md w-full py-2 richtext", placeholder:"l'essentiel de la léçon ..." %>
+    </div>
+
+  <div class="flex w-1/2 mt-2">
+    <div class="flex select w-1/2">
+      <%= f.select :material_id,
+          @materials.map { |m| [m.title, m.id] },
+          placeholder:"la matiere", hide_label: true, class:"border rounded py-2 px-3" %>
+    </div>
+    <div class="flex select w-1/2 ">
+       <%= f.select :level_id, @levels.map{|level| [level.title, level.id]}, class:" border rounded py-2 px-3",
+        placeholder:"Série", hide_label: true %>
+      
+    </div>
+  </div>
+
+  <div class="actions mt-4">
+    <%= f.submit "Publiez Léçon", class:"bg-green-500 p-2 font-bold rounded-md " %>
+  </div>
+  </div>
+<% end %>

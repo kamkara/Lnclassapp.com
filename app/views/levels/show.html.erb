@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @level.title %>
+</p>
+
+<p>
+  <strong>Slug:</strong>
+  <%= @level.slug %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @level.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_level_path(@level) %> |
+<%= link_to 'Back', levels_path %>

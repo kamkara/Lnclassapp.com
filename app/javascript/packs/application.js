@@ -25,5 +25,5 @@ import "stylesheets/application";
 const images = require.context('../images', true) // add constat for images
 
 // rich editor
-//require("trix")
-//require("@rails/actiontext")
+require("trix")
+require("@rails/actiontext")

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<% @title="Synthese" %>
+<div class="container">
+  <% @courses.each do |course| %> 
+    <div class="card rounded-md m-2 mt-2">
+      <h2 class="title font-bold text-md"> <%= course.title %></h2>
+      <div class=" border border-2 rounded-md m-1">
+        <div class="m-2">
+          <%= course.content %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

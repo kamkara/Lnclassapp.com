@@ -1,0 +1,28 @@
+<% @title="Accueil" %>
+<!-- component -->
+
+<%= render "home/feed/navbar" %> 
+
+
+<div class="grid grid-cols-1 mt-12 lg:mt-24 lg:grid-cols-4 lg:gap-3">
+    <!-- sidebar-->
+    <div class="lg:ml-28 col-span-1 ">
+       <div class="place-items-center">
+        <%= render "home/feed/sidebar" %>
+       </div>
+        <%= render "home/feed/terms" %>
+    </div>
+    <!-- feed content-->
+    <div class="col-span-2">
+        <div class="place-items-center">
+        
+            <%= render "home/feed/feed" %>
+        </div>
+    </div>
+    <!-- better feed -->
+    <div class="hidden col-span-1 lg:block lg:mr-28 "> 
+        <div class="place-items-center">
+            <%= render "home/feed/better_feed" %>
+        </div>
+    </div>
+</div>

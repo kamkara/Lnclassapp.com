@@ -1,0 +1,14 @@
+
+  <!-- Icon/!-->
+  <div class="hidden lg:block h-8 bg-red-300 rounded-md">
+    <p class="ml-1">
+      <span class="relative inline-flex h-5 w-3 bg-white animate"></span>
+      <span class="ml-2">Fil Matières </span>
+    </p>  
+  </div>
+  <div class="flex overflow-x-auto lg:block text-sm md:text-md font-semibold no-underline hover:no-underline space-x-1 lg:space-x-0 text-black p-1">
+    <% @materials.each do |m| %>
+      <%= link_to m.title, m , class:"bg-white p-1 rounded-l rounded-r lg:rounded-none lg:block" %>
+    <% end %>
+  </div>
+
