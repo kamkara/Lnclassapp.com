@@ -10,8 +10,8 @@ def title
   end
 end
 #site description
-def  description
-Lnclass Education aide les élèves a apprendre facilement
+def description
+  "Lnclass Education aide les élèves a apprendre facilement"
 end
 
     #Sign in and up anywhere on app
