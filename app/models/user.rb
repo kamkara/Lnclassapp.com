@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,  :trackable
   
   
-  #has_many :exercices
+  has_many :exercices
+  has_many :questions
   has_many :materials
   has_many :levels  
   has_many :classrooms  

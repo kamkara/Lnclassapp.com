@@ -1,4 +1,5 @@
 class ExercicesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_exercice, only: %i[ show edit update destroy publish ]
 
   # GET /exercices or /exercices.json
@@ -23,10 +24,10 @@ class ExercicesController < ApplicationController
 
   # POST /exercices or /exercices.json
   def create
-    @exercice = Exercice.new(exercice_params)
-    redirect_to classrooms_path and return if @exercice.save
+    #@exercice.user_id = current_user.id
+    @exercice = current_user.exercices.build(exercice_params)
+    redirect_to new_exercice_question_path(@exercice) and return if @exercice.save
     render :new
-    
   end
   
   def publish
@@ -51,6 +52,6 @@ class ExercicesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def exercice_params
-      params.require(:exercice).permit(:name, :slug, :classroom_id)
+      params.require(:exercice).permit(:name, :slug, :user_id, :classroom_id)
     end
 end
