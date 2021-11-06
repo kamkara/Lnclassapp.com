@@ -1,5 +1,10 @@
 <h1>New Exercice</h1>
-
-<%= render 'form', exercice: @exercice %>
-
-<%= link_to 'Back', exercices_path %>
+<div class="container">
+    <%= form_for @exercice, url: classroom_exercices_path() do |f| %>
+        <%= render 'shared/validation_errors', :record => @exercice %>
+        <%= f.hidden_field :classroom_id, value: @exercice.classroom_id %>
+        
+        <%= f.text_field :name , class:"border-2 p-2 rounded-md", placeholder:"le title de l'exercice ..." %>
+        <%= f.submit "Add exercices", class:"p-2 rounded-md bg-blue-400 font-bold" %>
+    <% end %>
+</div>

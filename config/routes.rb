@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       delete 'delete', to: 'exercices#destroy'
       post '/publish', to: 'exercices#pubish'
     end
-    #resources :questions, only: [:new, :create, :destroy]
+    resources :questions, only: [:new, :create, :destroy]
     #resources :results, only: [:new, :create]
     
   end
