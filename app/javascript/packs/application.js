@@ -11,3 +11,13 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+
+//= require jquery3
+//= require popper
+//= require bootstrap
+
+import "stylesheets/application";
+
+
+const images = require.context('../images', true) // add constat for images
