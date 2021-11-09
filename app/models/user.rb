@@ -16,28 +16,29 @@ class User < ApplicationRecord
   has_many :courses
   attr_writer :logged
 
+  
+  before_validation :user_is_student?
     ################## VALIDATES  ###############
    validates :first_name, :last_name, :full_name, :email, :city, :contact, :role,  presence: true
    validates :full_name,  length: { minimum:5, message: "%{value} verifier votre nom complet"}
    validates :contact, uniqueness: true, length: { minimum:10, message: "%{ value} verifier votre nom numéro est 10 chiffres"}
-   validates :matricule, uniqueness: true, length: { minimum:9, message: "%{ value} verifier votre nom matricule"}
+   validates :matricule, presence: true,  uniqueness: true, length: { minimum:9, message: "%{ value} verifier votre nom matricule"}, if: :user_is_student?
    validates :role, inclusion: { in: %w(Student Teacher Team), message: "%{value} acces non identifier" }
     
     
-  ############# CUSTOMIZE ###############"" 
-  
+   ############# CUSTOMIZE ###############""
+    
+  def user_is_student?
+    if self.role == "Student"
+        self.email = "#{self.matricule}@gmail.com" # if email.blank? (si email est vide)
+        self.password = "#{self.contact}"      
+    end    
+  end
   
   def full_name
     self.full_name = "#{self.first_name} #{self.last_name}" 
   end
   
-  def email
-    self.email = "#{self.matricule}@gmail.com" # if email.black? (si email est vide)
-  end
-  
-  def password
-    self.password = "#{self.contact}"  
-  end
   
   def slug
     self.slug = self.full_name
