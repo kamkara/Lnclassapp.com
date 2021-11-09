@@ -1,29 +1,41 @@
-<h2>Log in</h2>
-<div class="container">
+
+<% @title="Connexion" %>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-<%= render "devise/shared/error_messages", resource: resource %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+ <%= render "devise/shared/error_messages", resource: resource %>
+<!-- component -->
+<div class="h-screen px-8 bg-white flex flex-col space-y-10 justify-center items-center">
+  <!-- lnclass logo -->
+ <div class="flex ">
+  <p class="font-bold text-white text-3xl md:text-3xl">
+    <span class="bg-blue-500 text-white">Ln</span><span class="text-blue-500">class</span>
+  </p>
+ </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+  <!-- Layout  -->
+  <div class="bg-white shadow-xl rounded p-2">
+    <h1 class="text-3xl font-medium">Se Connecter</h1>
+    <p class="text-sm">Se connecter pour accéder aux contenus ou 
+     <%= link_to  "S'Inscrire rapidement", new_user_registration_path, class:"text-blue-700 font-medium" %> 
+     </p> 
+    <div class="space-y-5 mt-2">
+       <%= f.text_field :logged, class:"w-full h-12 border border-gray-800 rounded px-3",placeholder:"Matricule ou Email..."  %>
+      <div class="w-full flex items-center  border border-gray-800 rounded my-2">
+        <%= f.password_field :password ,class:"w-full h-12", placeholder:"N° WhatsApp ou Mot de passe" %> 
+      </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <!-- Remember-->
+       <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me , id:"remember_me" %>
+          <%= f.label :"Toujours connectez sur cet appareil", for:'remember_me', class:"mb-2" %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Se Connecter", disable_with: 'Connexion encours...', class:"text-center w-full mx-2 bg-blue-700 rounded-md text-white text-xl  py-3 font-medium" %>
+     
   </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
-
+  <!-- Footer -->
+  <p>Nouveau sur Lnclass ? <%= link_to  "S'Inscrire", new_user_registration_path, class:"text-blue-700 font-medium" %>  </p>
 </div>
+<% end %>
