@@ -1,0 +1,19 @@
+<ol>
+    <% record.questions.each do |q| %>
+
+        <div class="added-question">
+            <li>
+                <div class="added-content">
+                    <h4><%= q.content %></h4>
+                    <ul>
+                        <% q.answers.each do |a| %>
+                            <li><%= a.content %><%= " -correct answer" if a.correct_answer %></li>
+                        <% end %>
+                    </ul>
+                </div>
+                
+                <%= button_to "Remove", {action: 'destroy', exercice_id: q.exercice.id, id: q.id}, method: 'delete', class: "delete-question" %>
+            </li>
+        </div>
+    <% end %>
+</ol>

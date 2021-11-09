@@ -26,7 +26,7 @@ class ClassroomsController < ApplicationController
   # POST /classrooms or /classrooms.json
   def create
     @classroom = current_user.classrooms.build(classroom_params)
-    redirect_to classrooms_path(@classroom) and return if @classroom.save
+    redirect_to classroom_path(@classroom) and return if @classroom.save
     render :new
     
 

@@ -30,6 +30,7 @@ gem 'jquery-rails'
 gem 'friendly_id', '~> 5.4', '>= 5.4.2'
 gem 'devise', '~> 4.8'
 gem 'pundit', '~> 2.1', '>= 2.1.1'
+
 #gem 'devise_invitable', '~> 2.0', '>= 2.0.5'
 
 

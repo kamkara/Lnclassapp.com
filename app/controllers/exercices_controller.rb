@@ -31,7 +31,7 @@ class ExercicesController < ApplicationController
   end
   
   def publish
-    @exercice = Exercice.frinedly.find(params[:id])
+    @exercice = Exercice.friendly.find(params[:id])
     redirect_to classroom_path(@exercice.classroom) and return if @exercice.update(published: true)
         
     flash.notice << [@exercice.errors.full_messages]

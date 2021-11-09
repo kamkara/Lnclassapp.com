@@ -13,7 +13,9 @@ class QuestionsController < ApplicationController
 
   # GET /questions/new
   def new
+    @exercice = Exercice.friendly.find(params[:exercice_id])
     @question = Question.new
+    3.times { @question.answers.build}
   end
 
   # GET /questions/1/edit
@@ -22,18 +24,12 @@ class QuestionsController < ApplicationController
 
   # POST /questions or /questions.json
   def create
-    @question = Question.new(question_params)
-
-    respond_to do |format|
-      if @question.save
-        format.html { redirect_to @question, notice: "Question was successfully created." }
-        format.json { render :show, status: :created, location: @question }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
-      end
-    end
+    @question = Question.create(question_params)
+    redirect_to new_exercice_question_path(@question.exercice) and return if @question.valid?
+    @exercice = @question.exercice    
+    render :new
   end
+
 
   # PATCH/PUT /questions/1 or /questions/1.json
   def update
@@ -50,11 +46,10 @@ class QuestionsController < ApplicationController
 
   # DELETE /questions/1 or /questions/1.json
   def destroy
+    @question = Question.find(params[:id])
+    authorize @question, :destroy?
     @question.destroy
-    respond_to do |format|
-      format.html { redirect_to questions_url, notice: "Question was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to new_exercice_question_path(params[:exercice_id])
   end
 
   private
@@ -65,6 +60,6 @@ class QuestionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def question_params
-      params.require(:question).permit(:content, :exercice_id, :user_id, :answers_attributes => {})
+      params.require(:question).permit(:exercice_id, :content, :explain_answer, :answers_attributes => {})
     end
 end

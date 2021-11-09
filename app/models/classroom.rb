@@ -7,7 +7,8 @@ class Classroom < ApplicationRecord
   belongs_to :level
   has_many :exercices, dependent: :destroy
   has_one :classroom_admin, dependent: :delete
-  
+
+
   validates :name, :slug, :user_id, :level_id,  presence: true #:school_name_id, 
 
 

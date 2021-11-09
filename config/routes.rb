@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :exercices, except: [:new, :show, :edit, :create, :update, :destroy, :index] do
     member do
       delete 'delete', to: 'exercices#destroy'
-      post '/publish', to: 'exercices#pubish'
+      post '/publish', to: 'exercices#publish'
     end
     resources :questions, only: [:new, :create, :destroy]
     #resources :results, only: [:new, :create]

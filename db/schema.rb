@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_06_132029) do
+ActiveRecord::Schema.define(version: 2021_11_06_133522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -67,11 +67,9 @@ ActiveRecord::Schema.define(version: 2021_11_06_132029) do
     t.text "content"
     t.string "correct_answer"
     t.uuid "question_id", null: false
-    t.uuid "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
-    t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
   create_table "classroom_admins", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -162,12 +160,11 @@ ActiveRecord::Schema.define(version: 2021_11_06_132029) do
 
   create_table "questions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.text "content"
+    t.text "explain_answer"
     t.uuid "exercice_id", null: false
-    t.uuid "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["exercice_id"], name: "index_questions_on_exercice_id"
-    t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -206,7 +203,6 @@ ActiveRecord::Schema.define(version: 2021_11_06_132029) do
   add_foreign_key "answered_questions", "answers"
   add_foreign_key "answered_questions", "questions"
   add_foreign_key "answers", "questions"
-  add_foreign_key "answers", "users"
   add_foreign_key "classroom_admins", "classrooms"
   add_foreign_key "classroom_admins", "users"
   add_foreign_key "classrooms", "levels"
@@ -219,5 +215,4 @@ ActiveRecord::Schema.define(version: 2021_11_06_132029) do
   add_foreign_key "levels", "users"
   add_foreign_key "materials", "users"
   add_foreign_key "questions", "exercices"
-  add_foreign_key "questions", "users"
 end

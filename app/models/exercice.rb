@@ -4,7 +4,7 @@ class Exercice < ApplicationRecord
    
    
    belongs_to :user
-   has_many :questions, dependent: :delete_all#question
+   has_many :questions, dependent: :destroy
    belongs_to :classroom
     #has_many :results, dependent: :delete_all
     #has_many :notes
